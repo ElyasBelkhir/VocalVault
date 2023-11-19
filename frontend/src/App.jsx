@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import SignIn from "./SignIn.jsx";
+import SignUp from './SignUp.jsx'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -48,27 +51,34 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="card">
-        {user ? (
-          <>
-            <p>Welcome, {user.displayName}!</p>
-            <button onClick={handleLogout}>Logout</button>
-          </>
-        ) : (
-          <>
-            <p>Please log in to continue</p>
-            <div className="login-form">
-              <label>Email:</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-              <label>Password:</label>
-              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-              <button onClick={handleLogin}>Login</button>
-            </div>
-          </>
-        )}
-      </div>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignIn/>}/>
+          <Route path="/signin" element={<SignIn/>}/>
+          <Route path="/signup" element={<SignUp/>}/>
+        </Routes>
+      </BrowserRouter>
+    // <div className="container">
+    //   <div className="card">
+    //     {user ? (
+    //       <>
+    //         <p>Welcome, {user.displayName}!</p>
+    //         <button onClick={handleLogout}>Logout</button>
+    //       </>
+    //     ) : (
+    //       <>
+    //         <p>Please log in to continue</p>
+    //         <div className="login-form">
+    //           <label>Email:</label>
+    //           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+    //           <label>Password:</label>
+    //           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+    //           <button onClick={handleLogin}>Login</button>
+    //         </div>
+    //       </>
+    //     )}
+    //   </div>
+    // </div>
   );
 }
 
