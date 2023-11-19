@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
-import './SignIn.css';
+import '../Assets/SignIn.css';
 import {Link} from "react-router-dom";
 
 const SignUp = () => {

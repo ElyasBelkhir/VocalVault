@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './Assets/App.css';
+
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import SignIn from "./SignIn.jsx";
-import SignUp from './SignUp.jsx'
+import SignIn from "./Components/SignIn.jsx";
+import SignUp from './Components/SignUp.jsx'
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
