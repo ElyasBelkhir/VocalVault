@@ -1,13 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import SignUp from './SignUp.jsx';
-import SignIn from "./SignIn.jsx";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import React, { useEffect, useState } from 'react';
+import './App.css';
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
   authDomain: "aim-project-cd9e0.firebaseapp.com",
@@ -18,22 +13,64 @@ const firebaseConfig = {
   measurementId: "G-ECBERP0P8P"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth]);
+
+  const handleLogin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error('Login failed:', error.message);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error('Logout failed:', error.message);
+    }
+  };
 
   return (
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SignIn/>}>
-            <Route path="/signin" element={<SignIn/>}/>
-            <Route path="/signup" element={<SignUp/>}/>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <div className="container">
+      <div className="card">
+        {user ? (
+          <>
+            <p>Welcome, {user.displayName}!</p>
+            <button onClick={handleLogout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <p>Please log in to continue</p>
+            <div className="login-form">
+              <label>Email:</label>
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <label>Password:</label>
+              <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <button onClick={handleLogin}>Login</button>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
   );
 }
 
-export default App
+export default App;
+

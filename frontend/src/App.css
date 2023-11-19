@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  padding: 2em;
+  text-align: center;
+}
+
+.login-form {
+  margin-top: 1em;
+}
+
