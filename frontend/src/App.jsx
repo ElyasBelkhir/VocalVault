@@ -6,6 +6,7 @@ import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SignIn from "./Components/SignIn.jsx";
 import SignUp from './Components/SignUp.jsx'
+import Header from "./Components/Header.jsx";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -53,6 +54,7 @@ function App() {
 
   return (
       <BrowserRouter>
+        <Header></Header>
         <Routes>
           <Route path="/" element={<SignIn/>}/>
           <Route path="/signin" element={<SignIn/>}/>
