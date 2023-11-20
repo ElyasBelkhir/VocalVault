@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Flask App</title>
+    <title>Welcome to Speaker Comparison App</title>
 </head>
 <body>
-    <h1>Hello, this is your Flask app!</h1>
-    <form action="/check_speakers" method="post" enctype="multipart/form-data">
-        <label for="audio_file_1">Upload Audio File 1:</label>
-        <input type="file" name="audio_file_1" accept=".wav"><br>
-        <label for="audio_file_2">Upload Audio File 2:</label>
-        <input type="file" name="audio_file_2" accept=".wav"><br>
-        <input type="submit" value="Check Speakers">
+    <h1>Welcome to Speaker Comparison App</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <label for="file1">Upload Audio File 1:</label>
+        <input type="file" name="file1" accept=".wav" required><br>
+        <label for="file2">Upload Audio File 2:</label>
+        <input type="file" name="file2" accept=".wav" required><br>
+        <input type="submit" value="Compare">
     </form>
+
+    {% if result %}
+    <h2>Comparison Result:</h2>
+    <p>{{ result }}</p>
+    {% endif %}
 </body>
 </html>
