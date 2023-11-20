@@ -35,7 +35,9 @@ function AudioRecorder() {
     };
 
     const uploadAudioToFirebase = async () => {
-        if (audioBlob) {
+        if (!audioBlob) {
+            alert('Please record something before uploading.');
+        } else {
             const storageRef = ref(storage, `audios/${new Date().getTime()}.wav`);
             try {
                 await uploadBytes(storageRef, audioBlob);
@@ -47,20 +49,22 @@ function AudioRecorder() {
     };
 
     return (
-        <div className="container">
-            <div className="recorder">
-                <button onClick={isRecording ? stopRecording : startRecording}>
-                    {isRecording ? 'Stop Recording' : 'Start Recording'}
-                </button>
-                {isRecording || (
-                    <button onClick={uploadAudioToFirebase} disabled={!audioBlob}>
-                        Upload to Firebase
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+            <div style={{flexDirection: 'column'}}>
+                <div style={{textAlign: 'center', marginBottom: '20px'}}>
+                    <button onClick={isRecording ? stopRecording : startRecording} className="record-button">
+                        {isRecording ? 'Stop Recording' : 'Start Recording'}
                     </button>
-                )}
-            </div>
-
-            <div className="player">
-                {audioURL && <audio src={audioURL} controls />}
+                </div>
+                {isRecording && <p style={{fontSize: '20px', textAlign: 'center'}}>Recording...</p>}
+                {audioURL && <audio controls src={audioURL} />}
+                <div style={{textAlign: 'center'}}>
+                    {isRecording || (
+                        <button onClick={uploadAudioToFirebase} style={{marginTop: '20px'}}>
+                            Upload to Firebase
+                        </button>
+                    )}
+                </div>
             </div>
         </div>
     );

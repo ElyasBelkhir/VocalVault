@@ -22,7 +22,7 @@ const SignUp = () => {
 
     return (
         <div className="signInContainer">
-            <form onSubmit={handleSignUp} className="signInForm">
+            <div className="signInForm">
                 <input
                     type="email"
                     value={email}
@@ -36,9 +36,9 @@ const SignUp = () => {
                     placeholder="Password"
                 />
                 <AudioRecorder />
-                <button type="submit">Sign Up</button>
+                <button type="submit" onClick={handleSignUp}>Sign Up</button>
                 {error && <p className="errorMessage">{error}</p>}
-            </form>
+            </div>
 
             <p className="signUpLink">Already have an account? <Link to="/signin">Sign in</Link></p>
         </div>
