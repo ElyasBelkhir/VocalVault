@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import '../Assets/SignIn.css';
 import {Link} from "react-router-dom";
+import AudioRecorder from "./AudioRecorder.jsx";
 
 const SignUp = () => {
     const [email, setEmail] = useState('');
@@ -34,15 +35,10 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
+                <AudioRecorder/>
                 <button type="submit">Sign Up</button>
                 {error && <p className="errorMessage">{error}</p>}
             </form>
-            <div>
-                <label htmlFor="voiceInput">Record Your Voice:</label>
-                <button id="voiceInput">
-                    Record Voice
-                </button>
-            </div>
 
             <p className="signUpLink">Already have an account? <Link to="/signin">Sign in</Link></p>
         </div>

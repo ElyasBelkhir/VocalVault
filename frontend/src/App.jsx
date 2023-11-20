@@ -54,12 +54,14 @@ function App() {
 
   return (
       <BrowserRouter>
-        <Header></Header>
-        <Routes>
-          <Route path="/" element={<SignIn/>}/>
-          <Route path="/signin" element={<SignIn/>}/>
-          <Route path="/signup" element={<SignUp/>}/>
-        </Routes>
+        <Header/>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<SignIn/>}/>
+            <Route path="/signin" element={<SignIn/>}/>
+            <Route path="/signup" element={<SignUp/>}/>
+          </Routes>
+        </div>
       </BrowserRouter>
     // <div className="container">
     //   <div className="card">
