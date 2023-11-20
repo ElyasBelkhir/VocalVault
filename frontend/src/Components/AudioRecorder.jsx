@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
+import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 function AudioRecorder() {
     const [isRecording, setIsRecording] = useState(false);
     const [audioURL, setAudioURL] = useState('');
     const [audioBlob, setAudioBlob] = useState(null);
     const mediaRecorder = useRef(null);
+    const storage = getStorage();
 
     const startRecording = async () => {
         try {
@@ -32,24 +34,15 @@ function AudioRecorder() {
         }
     };
 
-    const handleUpload = (event) => {
-        const file = event.target.files[0];
-        if (file && file.type === 'audio/wav') {
-            setAudioBlob(file);
-            setAudioURL(URL.createObjectURL(file));
-        }
-    };
-
-    const handleDragOver = (event) => {
-        event.preventDefault();
-    };
-
-    const handleDrop = (event) => {
-        event.preventDefault();
-        const file = event.dataTransfer.files[0];
-        if (file && file.type === 'audio/wav') {
-            setAudioBlob(file);
-            setAudioURL(URL.createObjectURL(file));
+    const uploadAudioToFirebase = async () => {
+        if (audioBlob) {
+            const storageRef = ref(storage, `audios/${new Date().getTime()}.wav`);
+            try {
+                await uploadBytes(storageRef, audioBlob);
+                console.log('Audio uploaded to Firebase Storage!');
+            } catch (error) {
+                console.error('Error uploading the file', error);
+            }
         }
     };
 
@@ -59,23 +52,15 @@ function AudioRecorder() {
                 <button onClick={isRecording ? stopRecording : startRecording}>
                     {isRecording ? 'Stop Recording' : 'Start Recording'}
                 </button>
+                {isRecording || (
+                    <button onClick={uploadAudioToFirebase} disabled={!audioBlob}>
+                        Upload to Firebase
+                    </button>
+                )}
             </div>
 
             <div className="player">
                 {audioURL && <audio src={audioURL} controls />}
-            </div>
-
-            <div className="upload" onDragOver={handleDragOver} onDrop={handleDrop}>
-                <label htmlFor="audioUpload" className="label-upload">
-                    Upload WAV File
-                </label>
-                <input
-                    id="audioUpload"
-                    type="file"
-                    accept=".wav"
-                    onChange={handleUpload}
-                    style={{ display: 'none' }} // Hide the default input
-                />
             </div>
         </div>
     );

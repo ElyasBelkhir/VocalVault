@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import '../Assets/SignIn.css';
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AudioRecorder from "./AudioRecorder.jsx";
 
 const SignUp = () => {
@@ -14,7 +14,7 @@ const SignUp = () => {
         e.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            // TODO: Handle voice recording upload
+            // The audio upload functionality is now part of the AudioRecorder component.
         } catch (error) {
             setError(error.message);
         }
@@ -35,7 +35,7 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
-                <AudioRecorder/>
+                <AudioRecorder />
                 <button type="submit">Sign Up</button>
                 {error && <p className="errorMessage">{error}</p>}
             </form>
