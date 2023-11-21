@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import '../Assets/SignIn.css';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const handleSignIn = async (e) => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            // TODO: Navigate to voice authentication step
+            // Redirect to the /recordaudio page after successful sign-up
+            navigate('/recordaudio');
         } catch (error) {
             setError(error.message);
         }

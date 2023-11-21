@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import '../Assets/SignIn.css';
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import AudioRecorder from "./AudioRecorder.jsx";
 
 const SignUp = () => {
@@ -9,12 +9,14 @@ const SignUp = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const auth = getAuth();
+    const navigate = useNavigate();
 
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            // The audio upload functionality is now part of the AudioRecorder component.
+            // Redirect to the /recordaudio page after successful sign-up
+            navigate('/recordaudio');
         } catch (error) {
             setError(error.message);
         }
@@ -35,7 +37,6 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
-                <AudioRecorder />
                 <button type="submit" onClick={handleSignUp}>Sign Up</button>
                 {error && <p className="errorMessage">{error}</p>}
             </div>

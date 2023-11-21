@@ -7,6 +7,8 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SignIn from "./Components/SignIn.jsx";
 import SignUp from './Components/SignUp.jsx'
 import Header from "./Components/Header.jsx";
+import AudioRecorder from './Components/AudioRecorder';
+import RecordAudio from './Components/RecordAudio';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -60,32 +62,12 @@ function App() {
             <Route path="/" element={<SignIn/>}/>
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/signup" element={<SignUp/>}/>
+            <Route path="/record" element={<AudioRecorder />} />
+            <Route path="/recordaudio" element={<RecordAudio />} />
           </Routes>
         </div>
       </BrowserRouter>
-    // <div className="container">
-    //   <div className="card">
-    //     {user ? (
-    //       <>
-    //         <p>Welcome, {user.displayName}!</p>
-    //         <button onClick={handleLogout}>Logout</button>
-    //       </>
-    //     ) : (
-    //       <>
-    //         <p>Please log in to continue</p>
-    //         <div className="login-form">
-    //           <label>Email:</label>
-    //           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-    //           <label>Password:</label>
-    //           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-    //           <button onClick={handleLogin}>Login</button>
-    //         </div>
-    //       </>
-    //     )}
-    //   </div>
-    // </div>
   );
 }
-
 export default App;
 
