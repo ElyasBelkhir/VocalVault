@@ -4,10 +4,10 @@ import './Assets/App.css';
 import { initializeApp } from 'firebase/app';
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import { getStorage, ref } from 'firebase/storage';
 import SignIn from "./Components/SignIn.jsx";
 import SignUp from './Components/SignUp.jsx'
 import Header from "./Components/Header.jsx";
-import AudioRecorder from './Components/AudioRecorder';
 import RecordAudio from './Components/RecordAudio';
 
 const firebaseConfig = {
@@ -27,16 +27,24 @@ function App() {
   const [user, setUser] = useState(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [audioStorageRef, setAudioStorageRef] = useState(null);
+  const storage = getStorage();
+  const [userEmail, setUserEmail] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
+      // Set the audio storage reference using the user's email
+      if (user) {
+        const emailStorageRef = ref(storage, `audios/${user.email}`);
+        setAudioStorageRef(emailStorageRef);
+      }
     });
 
     return () => {
       unsubscribe();
     };
-  }, [auth]);
+  }, [auth, storage]);
 
   const handleLogin = async () => {
     try {
@@ -59,11 +67,10 @@ function App() {
         <Header/>
         <div className="container">
           <Routes>
-            <Route path="/" element={<SignIn/>}/>
-            <Route path="/signin" element={<SignIn/>}/>
-            <Route path="/signup" element={<SignUp/>}/>
-            <Route path="/record" element={<AudioRecorder />} />
-            <Route path="/recordaudio" element={<RecordAudio />} />
+            <Route path="/" element={<SignIn setUserEmail={setUserEmail} />}/>
+            <Route path="/signin" element={<SignIn setUserEmail={setUserEmail} />} />
+            <Route path="/signup" element={<SignUp setUserEmail={setUserEmail} />}/>
+            <Route path="/recordaudio" element={<RecordAudio userEmail={userEmail} />} />
           </Routes>
         </div>
       </BrowserRouter>

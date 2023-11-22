@@ -2,7 +2,7 @@
 import React, { useState, useRef } from 'react';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
-const AudioRecorder = () => {
+const AudioRecorder = ({ userEmail }) => {
   const [isRecording, setIsRecording] = useState(false);
   const [audioURL, setAudioURL] = useState('');
   const [audioBlob, setAudioBlob] = useState(null);
@@ -36,18 +36,19 @@ const AudioRecorder = () => {
   };
 
   const uploadAudioToFirebase = async () => {
-    if (!audioBlob) {
+    if (!audioBlob || !userEmail) {
       alert('Please record something before uploading.');
     } else {
-      const storageRef = ref(storage, `audios/${new Date().getTime()}.wav`);
       try {
-        await uploadBytes(storageRef, audioBlob);
+        // Use userEmail to create a unique storage reference
+        const audioStorageRef = ref(storage, `audios/${userEmail}`);
+        await uploadBytes(audioStorageRef, audioBlob);
         console.log('Audio uploaded to Firebase Storage!');
       } catch (error) {
         console.error('Error uploading the file', error);
       }
     }
-  };
+  };  
 
   return (
     <div>
