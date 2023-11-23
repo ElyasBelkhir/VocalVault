@@ -1,0 +1,48 @@
+.recordAudioContainer {
+    width: 600px;
+    height: 350px;
+    margin-top: 100px;
+    padding: 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+@keyframes textFadeSlideUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-200px);
+    }
+}
+
+@keyframes divFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.textBlock {
+    width: 80%;
+    position: absolute;
+    animation: textFadeSlideUp 5s forwards;
+    text-align: center;
+    z-index: 1;
+}
+
+.recordAudioContainer.animate {
+    animation: divFadeIn 2s forwards;
+}

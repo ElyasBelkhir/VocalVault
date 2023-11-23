@@ -8,7 +8,8 @@ import { getStorage, ref } from 'firebase/storage';
 import SignIn from "./Components/SignIn.jsx";
 import SignUp from './Components/SignUp.jsx'
 import Header from "./Components/Header.jsx";
-import RecordAudio from './Components/RecordAudio';
+import RecordAudioSignUp from "./Components/RecordAudioSignUp.jsx";
+import RecordAudioSignIn from "./Components/RecordAudioSignIn.jsx";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -70,7 +71,8 @@ function App() {
             <Route path="/" element={<SignIn setUserEmail={setUserEmail} />}/>
             <Route path="/signin" element={<SignIn setUserEmail={setUserEmail} />} />
             <Route path="/signup" element={<SignUp setUserEmail={setUserEmail} />}/>
-            <Route path="/recordaudio" element={<RecordAudio userEmail={userEmail} />} />
+            <Route path="/recordsignin" element={<RecordAudioSignIn />} />
+            <Route path="/recordsignup" element={<RecordAudioSignUp />} />
           </Routes>
         </div>
       </BrowserRouter>
