@@ -52,7 +52,7 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
       try {
         const audioStorageRef = ref(storage, `audios/${userEmail}${pathSuffix}`);
         await uploadBytes(audioStorageRef, audioBlob);
-        console.log('Audio uploaded to Firebase Storage!');
+        alert('Audio uploaded to Firebase Storage!');
       } catch (error) {
         console.error('Error uploading the file', error);
       }
