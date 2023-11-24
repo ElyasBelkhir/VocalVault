@@ -18,7 +18,7 @@ const SignIn = ({ setUserEmail }) => {
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            // Create the audio storage reference using the user's email
+
             const emailStorageRef = ref(storage, `audios/${email}`);
             setAudioStorageRef(emailStorageRef);
 
@@ -38,6 +38,7 @@ const SignIn = ({ setUserEmail }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    style={{marginBottom: '45px'}}
                 />
                 <input
                     type="password"
@@ -45,11 +46,11 @@ const SignIn = ({ setUserEmail }) => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                 />
+                <p style={{fontSize: '15px', textAlign: 'right', marginBottom: '20px'}} className="link"><Link to="/forgotpassword">Forgot Password?</Link></p>
                 <button type="submit">Sign In</button>
                 {error && <p>{error}</p>}
             </form>
-            {/* TODO: Implement Voice Authentication Section */}
-            <p className="signUpLink">Don't have an account? <Link to="/signup">Sign up</Link></p>
+            <p className="link">Don't have an account? <Link to="/signup">Sign up</Link></p>
         </div>
     );
 };

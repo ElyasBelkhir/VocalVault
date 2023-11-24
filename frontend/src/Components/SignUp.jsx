@@ -17,7 +17,7 @@ const SignUp = ({ setUserEmail }) => {
         e.preventDefault();
         try {
             await createUserWithEmailAndPassword(auth, email, password);
-            // Create the audio storage reference using the user's email
+
             const emailStorageRef = ref(storage, `audios/${email}`);
             setAudioStorageRef(emailStorageRef);
 
@@ -37,18 +37,19 @@ const SignUp = ({ setUserEmail }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Email"
+                    style={{marginBottom: '45px'}}
                 />
                 <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
+                    style={{marginBottom: '45px'}}
                 />
                 <button type="submit" onClick={handleSignUp}>Sign Up</button>
                 {error && <p className="errorMessage">{error}</p>}
             </div>
-
-            <p className="signUpLink">Already have an account? <Link to="/signin">Sign in</Link></p>
+            <p className="link">Already have an account? <Link to="/signin">Sign in</Link></p>
         </div>
     );
 };

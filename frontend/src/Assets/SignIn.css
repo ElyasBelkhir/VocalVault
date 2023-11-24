@@ -21,7 +21,6 @@ body, html {
 .signInForm {
     display: flex;
     flex-direction: column;
-    gap: 45px;
 }
 
 .signInForm input {
@@ -53,17 +52,17 @@ body, html {
     font-size: 16px;
 }
 
-.signUpLink {
+.link {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 25px;
 }
 
-.signUpLink a {
+.link a {
     color: #007bff;
     text-decoration: none;
 }
 
-.signUpLink a:hover {
+.link a:hover {
     text-decoration: underline;
 }
 
