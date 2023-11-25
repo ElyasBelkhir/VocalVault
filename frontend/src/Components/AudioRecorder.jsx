@@ -1,7 +1,9 @@
 import React, {useState, useRef, useCallback} from 'react';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 import RecordRTC, { StereoAudioRecorder } from 'recordrtc';
+import { useNavigate } from 'react-router-dom';
 import '../Assets/AudioRecorder.css'
+import axios from 'axios';
 
 const AudioRecorder = ({ userEmail, isSignUp }) => {
   const [isRecording, setIsRecording] = useState(false);
@@ -10,6 +12,8 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
   const mediaRecorder = useRef(null);
   const storage = getStorage();
   const pathSuffix = isSignUp ? 'signup' : 'signin';
+  const navigate = useNavigate();
+
 
   const startRecording = async () => {
     try {
@@ -48,14 +52,30 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
   const uploadAudioToFirebase = async () => {
     if (!audioBlob || !userEmail) {
       alert('Please record something before uploading.');
-    } else {
-      try {
-        const audioStorageRef = ref(storage, `audios/${userEmail}${pathSuffix}`);
-        await uploadBytes(audioStorageRef, audioBlob);
-        alert('Audio uploaded to Firebase Storage!');
-      } catch (error) {
-        console.error('Error uploading the file', error);
+      return;
+    }
+  
+    try {
+      const audioStorageRef = ref(storage, `audios/${userEmail}/${pathSuffix}.wav`);
+      await uploadBytes(audioStorageRef, audioBlob);
+  
+      if (!isSignUp) {
+        // For sign-in, only trigger the Flask backend with the user's email
+        const response = await axios.post('api/voice-verify', { userEmail: userEmail }, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+          if (response.data.verificationSuccess) {
+            navigate('/dashboard'); // Redirect to dashboard
+          } else {
+            alert('Speaker verification failed.');
       }
+      } else {
+        alert('Audio uploaded to Firebase Storage!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 

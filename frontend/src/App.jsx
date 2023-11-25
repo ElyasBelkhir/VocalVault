@@ -9,6 +9,7 @@ import Header from "./Components/Header.jsx";
 import RecordAudioSignUp from "./Components/RecordAudioSignUp.jsx";
 import RecordAudioSignIn from "./Components/RecordAudioSignIn.jsx";
 import ForgotPassword from "./Components/ForgotPassword.jsx";
+import Dashboard from './Components/Dashboard.jsx';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<SignIn setUserEmail={setUserEmail} />}/>
             <Route path="/signin" element={<SignIn setUserEmail={setUserEmail} />} />
             <Route path="/signup" element={<SignUp setUserEmail={setUserEmail} />}/>
+            <Route path="/dashboard" element={<Dashboard/>} />
             <Route path="/recordsignin" element={<RecordAudioSignIn />} />
             <Route path="/recordsignup" element={<RecordAudioSignUp />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />

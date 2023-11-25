@@ -7,11 +7,15 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
+frontend/node_modules
 dist
 dist-ssr
 *.local
-
+backend/.env
+backend/__pycache__/
+backend/myenv/
+backend/requirements.txt
+backend/vocal-vault-service-account-key.json
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
