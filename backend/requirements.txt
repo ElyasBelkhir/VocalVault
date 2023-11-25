@@ -1,0 +1,8 @@
+flask
+torch
+firebase-admin
+numpy
+tqdm
+transformers
+librosa
+python-dotenv
