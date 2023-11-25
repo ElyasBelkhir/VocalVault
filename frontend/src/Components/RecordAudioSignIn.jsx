@@ -25,31 +25,6 @@ const RecordAudioSignIn = () => {
     }
   }, [userEmail]);
 
-   // Function to handle voice data submission
-   const handleSubmit = async () => {
-    if (!voiceFile) {
-        console.log('No voice file to submit');
-        return;
-    }
-
-    try {
-        const formData = new FormData();
-        formData.append('voiceFile', voiceFile);
-        formData.append('email', userEmail);
-
-        const response = await axios.post('/api/voice-verify', formData, {
-            headers: { 'Content-Type': 'multipart/form-data' }
-        });
-
-        if (response.data.verificationSuccess) {
-            navigate('/dashboard');
-        } else {
-            console.log('Voice verification failed');
-        }
-    } catch (error) {
-        console.log('Error submitting voice data:', error);
-    }
-};
 
   return (
       <div className="container">
