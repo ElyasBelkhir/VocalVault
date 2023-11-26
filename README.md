@@ -29,7 +29,7 @@ cd frontend
 npm install
 npm run dev
 ```
-5. Run the Flask app:
+4. Run the Flask app:
 ```
 cd backend
 flask run
