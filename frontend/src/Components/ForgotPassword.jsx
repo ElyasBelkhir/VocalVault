@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { getAuth } from 'firebase/auth';
 import { sendPasswordResetEmail } from 'firebase/auth';
-import '../Assets/SignIn.css'
+import '../Assets/Authentication.css'
 import {Link} from "react-router-dom";
 import Header from "./Header.jsx";
 

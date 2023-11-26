@@ -5,7 +5,6 @@ import { getAuth } from 'firebase/auth';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SignIn from "./Components/SignIn.jsx";
 import SignUp from './Components/SignUp.jsx'
-import Header from "./Components/Header.jsx";
 import RecordAudioSignUp from "./Components/RecordAudioSignUp.jsx";
 import RecordAudioSignIn from "./Components/RecordAudioSignIn.jsx";
 import ForgotPassword from "./Components/ForgotPassword.jsx";

@@ -16,41 +16,7 @@
     color: white;
 }
 
-.recorder,
-.player,
-.upload {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 15px;
-    width: 300px;
-    text-align: center;
-    background: #f9f9f9;
-}
-
-button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
 audio {
     width: 100%;
     margin-top: 10px;
-}
-
-input[type="file"] {
-    padding: 5px;
 }

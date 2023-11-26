@@ -14,10 +14,10 @@ const Dashboard = () => {
       padding: '20px',
     },
     topBar: {
-      width: '100%',
-      background: '#005cbf',
+      width: '98%',
+      background: '#3498db',
       color: 'white',
-      padding: '10px',
+      padding: '15px',
       fontSize: '16px',
       fontWeight: 'bold',
       textTransform: 'uppercase',
@@ -132,6 +132,8 @@ const Dashboard = () => {
       borderRadius: '5px',
       cursor: 'pointer',
       transition: 'background 0.3s ease-in-out',
+      border: 'none',
+      marginRight: '5px'
     },
     additionalSection: {
       fontSize: '24px',
@@ -145,14 +147,22 @@ const Dashboard = () => {
       color: '#2c3e50',
       marginBottom: '20px',
     },
+    signOutButton: {
+      padding: '10px',
+      color: 'white',
+      background: '#e74c3c',
+      border: 'none',
+      borderRadius: '4px',
+      fontSize: '18px',
+      cursor: 'pointer',
+      transition: 'background-color 0.3s'
+    },
   };
 
-  // Additional Transactions
   const transactionsData = [
     { title: 'Online Shopping', amount: '-$500.00' },
     { title: 'Gas Station', amount: '-$50.00' },
     { title: 'Coffee Shop', amount: '-$5.00' },
-    // Add more transactions as needed
   ];
   const navigate = useNavigate();
   const auth = getAuth();
@@ -170,7 +180,7 @@ const Dashboard = () => {
       <div style={styles.app}>
         <div style={styles.topBar}>
           <span>Hello, {auth.currentUser.email}!</span>
-          <button onClick={signOutUser}>Sign Out</button>
+          <button style={styles.signOutButton} onClick={signOutUser}>Sign Out</button>
         </div>
         <div style={styles.container}>
           <div style={{ ...styles.section, gridColumn: 'span 2' }}>
@@ -192,7 +202,6 @@ const Dashboard = () => {
                     <div>{transaction.amount}</div>
                   </div>
               ))}
-              {/* Add more transaction items */}
             </div>
           </div>
 
@@ -227,7 +236,6 @@ const Dashboard = () => {
               <button style={{ ...styles.additionalButton, background: '#2ecc71' }}>
                 Beneficiary Management
               </button>
-              {/* Add more additional buttons */}
             </div>
           </div>
 
@@ -244,14 +252,12 @@ const Dashboard = () => {
               <button style={{ ...styles.additionalButton, background: '#f39c12' }}>
                 Change Password
               </button>
-              {/* Add more additional buttons */}
             </div>
           </div>
 
           <div style={styles.section}>
             <div style={styles.header}>Additional Section</div>
             <div style={styles.additionalContent}>
-              {/* Replace with actual content */}
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula eu ligula
                 accumsan tincidunt non et tellus. Nam ac efficitur nunc. Sed a odio eu ligula
@@ -264,7 +270,6 @@ const Dashboard = () => {
                 <button style={{ ...styles.additionalButton, background: '#f39c12' }}>
                   Additional Action 2
                 </button>
-                {/* Add more additional buttons */}
               </div>
             </div>
           </div>

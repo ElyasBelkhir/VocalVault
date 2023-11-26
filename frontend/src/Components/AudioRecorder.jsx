@@ -67,7 +67,7 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
           }
         });
           if (response.data.verificationSuccess) {
-            navigate('/dashboard'); // Redirect to dashboard
+            navigate('/dashboard');
           } else {
             alert('Speaker verification failed.');
       }

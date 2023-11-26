@@ -96,11 +96,12 @@ def verify():
     # Compare the audio files using the local paths
     result = compare_audio(local_signup_audio, local_signin_audio)
     print(f"Verification result for user {user_email}: {'Speakers are the same' if result else 'Speakers are not the same'}")
-     # Clean up temporary files
+
+    # Clean up temporary files
     os.remove(local_signup_audio)
     os.remove(local_signin_audio)
 
-    is_verified = result # Placeholder for actual verification logic
+    is_verified = result
     return jsonify({"verificationSuccess": is_verified})
 
 if __name__ == "__main__":
