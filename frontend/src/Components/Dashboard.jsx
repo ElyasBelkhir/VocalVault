@@ -12,13 +12,15 @@ const Dashboard = () => {
       flexDirection: 'column',
       alignItems: 'center',
       padding: '20px',
+      margin: '15px',
+      borderRadius: '5px'
     },
     topBar: {
       width: '98%',
       background: '#3498db',
       color: 'white',
       padding: '15px',
-      fontSize: '16px',
+      fontSize: '20px',
       fontWeight: 'bold',
       textTransform: 'uppercase',
       boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
@@ -149,6 +151,7 @@ const Dashboard = () => {
     },
     signOutButton: {
       padding: '10px',
+      fontWeight: 'bold',
       color: 'white',
       background: '#e74c3c',
       border: 'none',
@@ -187,7 +190,7 @@ const Dashboard = () => {
             <div style={styles.header}>Your Secure Account</div>
             <div style={styles.accountInfo}>
               <div>
-                <div>Account Number: ************7564</div>
+                <div style={styles.balance}>Account Number: ************7564</div>
               </div>
               <div style={styles.balance}>Balance: $10,000.00</div>
             </div>
@@ -220,7 +223,7 @@ const Dashboard = () => {
               Your latest statement is available for download. Stay organized by accessing your
               statements online.
             </div>
-            <button style={styles.actionButtonSecondary}>Download Statement</button>
+            <button style={styles.actionButton}>Download Statement</button>
           </div>
 
           <div style={styles.section}>
@@ -230,10 +233,10 @@ const Dashboard = () => {
               managing beneficiaries, we've got you covered.
             </div>
             <div style={styles.additionalButtons}>
-              <button style={{ ...styles.additionalButton, background: '#3498db' }}>
+              <button style={{ ...styles.additionalButton, background: '#e74c3c' }}>
                 Automatic Payments
               </button>
-              <button style={{ ...styles.additionalButton, background: '#2ecc71' }}>
+              <button style={{ ...styles.additionalButton, background: '#f39c12' }}>
                 Beneficiary Management
               </button>
             </div>
@@ -241,38 +244,48 @@ const Dashboard = () => {
 
           <div style={styles.section}>
             <div style={styles.header}>Security Measures</div>
-            <div style={styles.details}>
+            <div style={styles.summary}>
               Your account security is our top priority. Explore the latest security measures we've
               implemented to protect your financial information.
             </div>
             <div style={styles.additionalButtons}>
-              <button style={{ ...styles.additionalButton, background: '#e74c3c' }}>
+              <button style={ styles.actionButton }>
                 Two-Factor Authentication
-              </button>
-              <button style={{ ...styles.additionalButton, background: '#f39c12' }}>
-                Change Password
               </button>
             </div>
           </div>
 
           <div style={styles.section}>
-            <div style={styles.header}>Additional Section</div>
-            <div style={styles.additionalContent}>
+            <div style={styles.header}>My Rewards</div>
+            <div style={styles.summary}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut ligula eu ligula
-                accumsan tincidunt non et tellus. Nam ac efficitur nunc. Sed a odio eu ligula
-                convallis tincidunt non non urna.
+                Explore the rewards you've earned with our program. Redeem them to enjoy exclusive benefits and offers.
               </p>
               <div style={styles.additionalButtons}>
                 <button style={{ ...styles.additionalButton, background: '#e74c3c' }}>
-                  Additional Action 1
+                  Redeem Rewards
                 </button>
                 <button style={{ ...styles.additionalButton, background: '#f39c12' }}>
-                  Additional Action 2
+                  View All Rewards
                 </button>
               </div>
             </div>
           </div>
+
+          <div style={styles.section}>
+            <div style={styles.header}>Investment Insights</div>
+            <div style={styles.summary}>
+              <p>
+                Get a quick overview of your investment portfolio. Track the performance of your stocks, bonds, and mutual funds, and stay informed about market trends.
+              </p>
+              <div style={styles.additionalButtons}>
+                <button style={ styles.actionButton }>
+                  View Portfolio
+                </button>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
   );

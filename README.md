@@ -1,3 +1,5 @@
+<img alt="img.png" height="400" src="img.png" width="400"/>
+
 ## VocalVault
 VocalVault is a two-factor authentication method that uses voice authentication using the CNN machine learning model WavLM and PyTorch to extract embeddings from voices and calculate cosine similarity to validate users on sign-in. The application uses ReactJS for the frontend and Python with Flask for the backend.
 
