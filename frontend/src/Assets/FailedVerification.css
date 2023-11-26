@@ -1,0 +1,39 @@
+.verification-failure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100vw;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.verification-failure h2 {
+    font-size: 5em;
+}
+
+.verification-failure p {
+    font-size: 2em;
+}
+
+.verification-failure .btn {
+    padding: 15px 30px;
+    font-size: 1.8em;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #dc3545;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+}
+
+.verification-failure .btn:hover {
+    background-color: #c82333;
+}
+

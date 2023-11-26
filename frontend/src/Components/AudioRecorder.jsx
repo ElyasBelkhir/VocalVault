@@ -69,7 +69,7 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
           if (response.data.verificationSuccess) {
             navigate('/dashboard');
           } else {
-            alert('Speaker verification failed.');
+            navigate('/failedverification');
       }
       } else {
         alert('Audio uploaded to Firebase Storage!');

@@ -9,6 +9,7 @@ import RecordAudioSignUp from "./Components/RecordAudioSignUp.jsx";
 import RecordAudioSignIn from "./Components/RecordAudioSignIn.jsx";
 import ForgotPassword from "./Components/ForgotPassword.jsx";
 import Dashboard from './Components/Dashboard.jsx';
+import FailedVerification from "./Components/FailedVerification.jsx";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
@@ -38,6 +39,7 @@ function App() {
             <Route path="/recordsignin" element={<RecordAudioSignIn />} />
             <Route path="/recordsignup" element={<RecordAudioSignUp />} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
+            <Route path="/failedverification" element={<FailedVerification/>} />
           </Routes>
         </div>
       </BrowserRouter>
