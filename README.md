@@ -15,11 +15,11 @@ To run VocalVault, you will need the following libraries:
 - Python-dotenv
   
 ## Usage
-1. Clone the repository: 
+1. Clone the repository
 ```
 git clone https://github.com/ElyasBelkhir/VocalVault.git
 ```
-2. Install the required libraries:
+2. Install the required libraries
 ```
 pip install -r requirements.txt
 ```
@@ -29,9 +29,21 @@ cd frontend
 npm install
 npm run dev
 ```
-4. Run the Flask app:
+4. Start the virtual environment
 ```
 cd backend
+virtualenv myenv
+```
+Windows Do
+```
+myenv\Scripts\activate
+```
+Mac/Linux Do
+```
+source myenv/bin/activate
+```
+5. Run the Flask app
+```
 flask run
 ```
 
