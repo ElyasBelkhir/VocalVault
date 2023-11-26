@@ -19,17 +19,13 @@ To run VocalVault, you will need the following libraries:
 ```
 git clone https://github.com/ElyasBelkhir/VocalVault.git
 ```
-2. Install the required libraries
-```
-pip install -r requirements.txt
-```
-3. Run the React app
+2. Run the React app
 ```
 cd frontend
 npm install
 npm run dev
 ```
-4. Start the virtual environment
+3. Start the virtual environment
 ```
 cd backend
 virtualenv myenv
@@ -41,6 +37,10 @@ myenv\Scripts\activate
 Mac/Linux Do
 ```
 source myenv/bin/activate
+```
+4. Install the required libraries
+```
+pip install -r requirements.txt
 ```
 5. Run the Flask app
 ```
