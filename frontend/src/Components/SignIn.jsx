@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import '../Assets/SignIn.css';
 import {Link, useNavigate} from "react-router-dom";
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
+import Header from "./Header.jsx";
 
 const SignIn = ({ setUserEmail }) => {
     const [email, setEmail] = useState('');
@@ -31,26 +32,29 @@ const SignIn = ({ setUserEmail }) => {
     };
 
     return (
-        <div className="signInContainer">
-            <form onSubmit={handleSignIn} className="signInForm">
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    style={{marginBottom: '45px'}}
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                />
-                <p style={{fontSize: '15px', textAlign: 'right', marginBottom: '20px'}} className="link"><Link to="/forgotpassword">Forgot Password?</Link></p>
-                <button type="submit">Sign In</button>
-                {error && <p>{error}</p>}
-            </form>
-            <p className="link">Don't have an account? <Link to="/signup">Sign up</Link></p>
+        <div>
+            <Header/>
+            <div className="signInContainer">
+                <form onSubmit={handleSignIn} className="signInForm">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Email"
+                        style={{marginBottom: '45px'}}
+                    />
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        placeholder="Password"
+                    />
+                    <p style={{fontSize: '15px', textAlign: 'right', marginBottom: '20px'}} className="link"><Link to="/forgotpassword">Forgot Password?</Link></p>
+                    <button type="submit">Sign In</button>
+                    {error && <p>{error}</p>}
+                </form>
+                <p className="link">Don't have an account? <Link to="/signup">Sign up</Link></p>
+            </div>
         </div>
     );
 };

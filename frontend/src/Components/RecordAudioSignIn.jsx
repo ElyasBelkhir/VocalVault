@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../Assets/RecordAudio.css'
 import axios from 'axios';
+import Header from "./Header.jsx";
 
 const RecordAudioSignIn = () => {
   const location = useLocation();
@@ -27,15 +28,18 @@ const RecordAudioSignIn = () => {
 
 
   return (
-      <div className="container">
-        <h1 className="textBlock">
-          Welcome back {userEmail}! Please record or upload an audio clip of yourself so we can verify your identity
-        </h1>
-        {showRecorder && (
-            <div className={`recordAudioContainer ${showRecorder ? 'animate' : ''}`}>
-              <AudioRecorder userEmail={userEmail} isSignUp={false}/>
-            </div>
-        )}
+      <div>
+        <Header/>
+        <div className="container">
+          <h1 className="textBlock">
+            Welcome back {userEmail}! Please record or upload an audio clip of yourself so we can verify your identity
+          </h1>
+          {showRecorder && (
+              <div className={`recordAudioContainer ${showRecorder ? 'animate' : ''}`}>
+                <AudioRecorder userEmail={userEmail} isSignUp={false}/>
+              </div>
+          )}
+        </div>
       </div>
   );
 };

@@ -73,6 +73,7 @@ const AudioRecorder = ({ userEmail, isSignUp }) => {
       }
       } else {
         alert('Audio uploaded to Firebase Storage!');
+        navigate('/dashboard');
       }
     } catch (error) {
       console.error('Error:', error);

@@ -2,6 +2,7 @@ import AudioRecorder from './AudioRecorder';
 import React, {useEffect, useState} from 'react';
 import { useLocation } from 'react-router-dom';
 import '../Assets/RecordAudio.css'
+import Header from "./Header.jsx";
 
 const RecordAudioSignUp = () => {
     const location = useLocation();
@@ -25,15 +26,18 @@ const RecordAudioSignUp = () => {
     }, [userEmail]);
 
     return (
-        <div className="container">
-            <h1 className="textBlock">
-                Welcome {userEmail}! Since this is your first time signing in, please record or upload an audio clip of yourself
-            </h1>
-            {showRecorder && (
-                <div className={`recordAudioContainer ${showRecorder ? 'animate' : ''}`}>
-                    <AudioRecorder userEmail={userEmail} isSignUp={true}/>
-                </div>
-            )}
+        <div>
+            <Header/>
+            <div className="container">
+                <h1 className="textBlock">
+                    Welcome {userEmail}! Since this is your first time signing in, please record or upload an audio clip of yourself
+                </h1>
+                {showRecorder && (
+                    <div className={`recordAudioContainer ${showRecorder ? 'animate' : ''}`}>
+                        <AudioRecorder userEmail={userEmail} isSignUp={true}/>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
