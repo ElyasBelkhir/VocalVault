@@ -11,17 +11,8 @@ import ForgotPassword from "./Components/ForgotPassword.jsx";
 import Dashboard from './Components/Dashboard.jsx';
 import FailedVerification from "./Components/FailedVerification.jsx";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBPFPRCkDm0lbeLQOvym-bp0K9pI8JJI5Y",
-  authDomain: "aim-project-cd9e0.firebaseapp.com",
-  projectId: "aim-project-cd9e0",
-  storageBucket: "aim-project-cd9e0.appspot.com",
-  messagingSenderId: "644788453808",
-  appId: "1:644788453808:web:e35c4695086b51bc6e5675",
-  measurementId: "G-ECBERP0P8P"
-};
 
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG));
 const auth = getAuth(app);
 
 function App() {
