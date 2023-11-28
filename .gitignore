@@ -13,6 +13,10 @@ dist-ssr
 *.local
 backend/__pycache__/
 backend/myenv/
+backend/.env
+backend/service-key.json
+frontend/.env
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

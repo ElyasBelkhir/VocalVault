@@ -14,7 +14,7 @@ app = Flask(__name__)
 load_dotenv(find_dotenv())
 
 # Initialize Firebase app
-cred = credentials.Certificate('vocal-vault-service-account-key.json')
+cred = credentials.Certificate('service-key.json')
 firebase_project_id = os.environ.get('FIREBASE_PROJECT_ID')
 firebase_admin.initialize_app(cred, {
     'storageBucket': f'{firebase_project_id}.appspot.com'
