@@ -59,3 +59,10 @@ The VocalVault frontend was built using ReactJS, a JavaScript library for buildi
 
 ## Backend
 The VocalVault backend was built using Python with Flask, a micro web framework. The backend receives the sign-in request from the frontend, extracts the embeddings from both the sign-up and sign-in audios using the WavLM speech processing model, and calculates the cosine similarity between the two embeddings. The model returns the predicted validation choice, which must meet a certain threshold to successfully validate the user and is then sent back to the frontend.
+
+## Demo
+https://github.com/ElyasBelkhir/VocalVault/assets/76620497/78538002-b2f7-4164-ba55-fb7b695d658f
+
+
+## Link to Slide Deck
+[Slide Deck](https://docs.google.com/presentation/d/1oiG1FroWLf2ctXzdqCm_mxhMgFlPAo-6tWsx3z7ZdW4/edit?usp=sharing)
